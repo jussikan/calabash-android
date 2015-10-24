@@ -65,6 +65,11 @@ module Calabash module Android
       @@default_device = device
     end
 
+    # datetime in format YYYYMMDD.HHMMSS
+    def set_system_datetime(datetime)
+      `#{default_device.adb_command} shell date -s #{datetime}`
+    end
+
     def performAction(action, *arguments)
       puts "Warning: The method performAction is deprecated. Please use perform_action instead."
 
